@@ -7,14 +7,24 @@ const { expect } = chai;
 
 describe('/ Endpoint', () => {
   it('should be working', async () => {
-    const res = await chai.request(app).get('/');
+    let res;
+    try {
+      res = await chai.request(app).get('/');
+    } catch (error) {
+      console.error(error);
+    }
     expect(res.status).to.equal(200);
   });
 });
 
 describe('Invalid endpoint', () => {
   it('should be return 404', async () => {
-    const res = await chai.request(app).get('/invalid');
+    let res;
+    try {
+      res = await chai.request(app).get('/invalid');
+    } catch (error) {
+      console.error(error);
+    }
     expect(res.status).to.equal(404);
   });
 });

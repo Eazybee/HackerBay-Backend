@@ -5,20 +5,20 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon ./server/index.js --exec babel-node",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "nyc mocha ./server/tests/index.spec.js --exit",
     "lint": "eslint '**/*js'",
     "lint:fix": "prettier-eslint --write '**/*js' "
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Eazybee/HackerBay-Backend-.git"
+    "url": "git+https://github.com/Eazybee/HackerBay-Backend.git"
   },
   "author": "Ilori Ezekiel",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Eazybee/HackerBay-Backend-/issues"
+    "url": "https://github.com/Eazybee/HackerBay-Backend/issues"
   },
-  "homepage": "https://github.com/Eazybee/HackerBay-Backend-#readme",
+  "homepage": "https://github.com/Eazybee/HackerBay-Backend#readme",
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.17.1",
@@ -35,6 +35,7 @@
     "@babel/register": "^7.6.2",
     "@babel/runtime": "^7.6.3",
     "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
     "eslint": "^6.5.1",
     "eslint-config-airbnb-base": "^14.0.0",
     "eslint-plugin-import": "^2.18.2",
@@ -55,5 +56,15 @@
     "hooks": {
       "pre-commit": "lint-staged"
     }
+  },
+  "nyc": {
+    "require": [
+      "@babel/register"
+    ],
+    "reporter": [
+      "lcov",
+      "text",
+      "html"
+    ]
   }
 }

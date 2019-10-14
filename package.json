@@ -1,0 +1,59 @@
+{
+  "name": "hackerbay-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon ./server/index.js --exec babel-node",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint '**/*js'",
+    "lint:fix": "prettier-eslint --write '**/*js' "
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Eazybee/HackerBay-Backend-.git"
+  },
+  "author": "Ilori Ezekiel",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Eazybee/HackerBay-Backend-/issues"
+  },
+  "homepage": "https://github.com/Eazybee/HackerBay-Backend-#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "nodemon": "^1.19.3",
+    "validatorjs": "^3.17.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.6.4",
+    "@babel/core": "^7.6.4",
+    "@babel/node": "^7.6.3",
+    "@babel/plugin-transform-runtime": "^7.6.2",
+    "@babel/preset-env": "^7.6.3",
+    "@babel/register": "^7.6.2",
+    "@babel/runtime": "^7.6.3",
+    "chai": "^4.2.0",
+    "eslint": "^6.5.1",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.18.2",
+    "husky": "^3.0.9",
+    "lint-staged": "^9.4.2",
+    "mocha": "^6.2.1",
+    "nyc": "^14.1.1",
+    "prettier-eslint": "^9.0.0",
+    "prettier-eslint-cli": "^5.0.0"
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix",
+      "git add"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  }
+}

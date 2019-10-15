@@ -22,7 +22,7 @@ const validateLogin = (req, res, next) => {
 
   if (validation.fails()) {
     res.status(400).json({
-      status: 'fail',
+      status: 'error',
       error: validation.errors.all(),
     });
   } else {

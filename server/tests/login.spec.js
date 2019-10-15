@@ -37,7 +37,7 @@ describe('/login', () => {
     }
 
     expect(res.status).to.equal(400);
-    expect(res.body.status).to.equal('fail');
+    expect(res.body.status).to.equal('error');
     expect(res.body).to.haveOwnProperty('error');
   });
 });

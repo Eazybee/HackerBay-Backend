@@ -1,5 +1,6 @@
 import express from 'express';
 import auth from './auth';
+import json from './json';
 
 const router = express.Router();
 
@@ -8,8 +9,9 @@ router.get('/', (req, res) => {
 });
 
 router.use('/login', auth);
+router.use('/json', json);
 
-router.all('*', (req, res) => res.status(404).send({
+router.use((req, res) => res.status(404).send({
   status: 'error',
   message: 'you have entered an incorrect route',
 }));

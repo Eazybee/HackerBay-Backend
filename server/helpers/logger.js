@@ -17,7 +17,6 @@ const createLogger = (service) => {
     ],
   });
 
-  // eslint-disable-next-line no-unused-expressions
   process.env.NODE_ENV !== 'production'
     && logger.add(new winston.transports.Console({
       format: winston.format.simple(),

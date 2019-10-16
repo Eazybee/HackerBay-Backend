@@ -1,4 +1,4 @@
-import Validator from 'validatorjs';
+import validateSchema from '../helpers/utils';
 
 
 /**
@@ -11,21 +11,12 @@ import Validator from 'validatorjs';
  * @returns {object} res
 */
 const validateLogin = (req, res, next) => {
-  const { userName, password } = req.body;
   const loginRules = {
     userName: 'required|alpha',
     password: ['required', 'min:8'],
   };
 
-  const data = { userName, password };
-  const validation = new Validator(data, loginRules);
-
-  if (validation.fails()) {
-    res.status(400).json({
-      status: 'error',
-      error: validation.errors.all(),
-    });
-  } else {
+  if (validateSchema(req.body, loginRules, res)) {
     next();
   }
 };

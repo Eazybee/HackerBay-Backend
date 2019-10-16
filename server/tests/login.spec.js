@@ -18,7 +18,7 @@ describe('/login', () => {
     } catch (error) {
       console.error(error);
     }
-
+    // expect(res.body.error.username).to.equal(200);
     expect(res.status).to.equal(200);
     expect(res.body.status).to.equal('success');
   });

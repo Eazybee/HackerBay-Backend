@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon ./server/index.js --exec babel-node",
-    "test": "nyc mocha ./server/tests/index.spec.js --exit",
+    "test": "nyc mocha ./server/tests/index.spec.js --timeout 10000 --exit",
     "lint": "eslint '**/*js'",
     "lint:fix": "prettier-eslint --write '**/*js' "
   },
@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/Eazybee/HackerBay-Backend#readme",
   "dependencies": {
+    "axios": "^0.19.0",
     "cors": "^2.8.5",
     "dotenv": "^8.1.0",
     "express": "^4.17.1",
@@ -27,6 +28,7 @@
     "helmet": "^3.21.1",
     "jsonwebtoken": "^8.5.1",
     "nodemon": "^1.19.3",
+    "sharp": "^0.23.1",
     "validatorjs": "^3.17.1",
     "winston": "^3.2.1"
   },

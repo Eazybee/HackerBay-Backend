@@ -1,0 +1,16 @@
+{
+  "name": "authentication",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "babel-node ",
+    "start": "nodemon --exec babel-node ./index.js ",
+    "test": "nyc mocha ./tests/index.spec.js --exit"
+  },
+  "dependencies": {
+    "jsonwebtoken": "^8.5.1",
+    "validatorjs": "^3.17.1"
+  },
+  "license": "MIT"
+}

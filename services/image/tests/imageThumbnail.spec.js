@@ -51,3 +51,15 @@ describe('/image/thumbnail endpoint', () => {
     expect(res.body).to.haveOwnProperty('error');
   });
 });
+
+describe('Invalid endpoint', () => {
+  it('should be return 404', async () => {
+    let res;
+    try {
+      res = await chai.request(app).get('/invalid');
+    } catch (error) {
+      console.error(error);
+    }
+    expect(res.status).to.equal(404);
+  });
+});

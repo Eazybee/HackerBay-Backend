@@ -1,7 +1,7 @@
 import chai from 'chai';
 import chaiHttp from 'chai-http';
 import app from '../index';
-import patchJson from '../controlllers/jsonPatch';
+import patchJson from '../src/controlllers/jsonPatch';
 
 chai.use(chaiHttp);
 const { expect } = chai;
@@ -67,5 +67,17 @@ describe('jsonPatchController', () => {
     patchJson(req, res);
     expect(res.statusCode).to.equal(400);
     expect(res.body).to.haveOwnProperty('error');
+  });
+});
+
+describe('Invalid endpoint', () => {
+  it('should be return 404', async () => {
+    let res;
+    try {
+      res = await chai.request(app).get('/invalid');
+    } catch (error) {
+      console.error(error);
+    }
+    expect(res.status).to.equal(404);
   });
 });

@@ -4,10 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon ./server/index.js --exec babel-node",
-    "test": "nyc mocha ./server/tests/index.spec.js --timeout 10000 --exit",
-    "lint": "eslint '**/*js'",
-    "lint:fix": "prettier-eslint --write '**/*js' "
+    "start-dev": "concurrently \"cd services/auth && npm run start\" \"cd services/json && npm run start\" \"cd services/image && npm run start\"",
+    "start": "lerna exec --no-bail npm start",
+    "test": "nyc mocha ./**/tests/*.spec.js --timeout 10000 --exit",
+    "bootstrap": "lerna bootstrap",
+    "lint": "eslint './services/**/*js'",
+    "lint:fix": "prettier-eslint --write './services/**/*js' "
   },
   "repository": {
     "type": "git",
@@ -20,27 +22,21 @@
   },
   "homepage": "https://github.com/Eazybee/HackerBay-Backend#readme",
   "dependencies": {
-    "axios": "^0.19.0",
+    "concurrently": "^5.0.0",
     "cors": "^2.8.5",
     "dotenv": "^8.1.0",
     "express": "^4.17.1",
-    "fast-json-patch": "^3.0.0-1",
     "helmet": "^3.21.1",
-    "jsonwebtoken": "^8.5.1",
+    "lerna": "^3.4.3",
     "nodemon": "^1.19.3",
-    "sharp": "^0.23.1",
-    "validatorjs": "^3.17.1",
     "winston": "^3.2.1"
   },
   "devDependencies": {
-    "@babel/cli": "^7.6.4",
-    "@babel/core": "^7.6.4",
-    "@babel/node": "^7.6.3",
-    "@babel/plugin-transform-runtime": "^7.6.2",
-    "@babel/preset-env": "^7.6.3",
-    "@babel/register": "^7.6.2",
-    "@babel/runtime": "^7.6.3",
-    "babel-plugin-istanbul": "^5.2.0",
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
     "chai": "^4.2.0",
     "chai-http": "^4.3.0",
     "eslint": "^6.5.1",
@@ -66,13 +62,9 @@
   },
   "nyc": {
     "require": [
-      "@babel/register"
+      "babel-register"
     ],
-    "reporter": [
-      "lcov",
-      "text",
-      "html"
-    ],
+    "reporter": ["lcov", "text", "html"],
     "exclude": [
       "**/*.spec.js"
     ]

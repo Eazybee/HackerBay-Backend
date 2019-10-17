@@ -4,6 +4,11 @@ import login from '../controlllers/login';
 
 const router = express.Router();
 
-router.post('/', validateLogin, login);
+router.post('/login', validateLogin, login);
+
+router.use((req, res) => res.status(404).send({
+  status: 'error',
+  error: 'you have entered an incorrect route',
+}));
 
 export default router;

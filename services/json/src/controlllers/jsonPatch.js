@@ -1,6 +1,5 @@
 import { applyOperation } from 'fast-json-patch';
 
-
 const patchJson = (req, res) => {
   try {
     const { operation, document } = req.body;

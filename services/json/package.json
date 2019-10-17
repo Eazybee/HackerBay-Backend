@@ -1,0 +1,14 @@
+{
+  "name": "json",
+  "version": "1.0.0",
+  "description": "json micro service",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon ./index.js --exec babel-node",
+    "test": "nyc mocha ./tests/index.spec.js --exit"
+  },
+  "dependencies": {
+    "fast-json-patch": "^3.0.0-1"
+  },
+  "license": "MIT"
+}

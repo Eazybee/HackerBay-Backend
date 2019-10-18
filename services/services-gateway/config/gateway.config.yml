@@ -1,0 +1,61 @@
+http:
+  port: 3000
+
+apiEndpoints:
+  auth:
+    host: '*'
+    paths: '/api/v1/auth/login'
+    methods: ['POST', 'OPTIONS']
+  json:
+    host: '*'
+    paths: '/api/v1/json'
+    methods: ['PATCH', 'OPTIONS']
+  image:
+    host: '*'
+    paths: '/api/v1/image/thumbnail'
+    methods: ['GET', 'OPTIONS']
+
+serviceEndpoints:
+  auth:
+    url: 'http://localhost:${AUTH_PORT:-3009}'
+  json:
+    url: 'http://localhost:${JSON_PORT:-3008}'
+  image:
+    url: 'http://localhost:${IMAGE_PORT:-3007}'
+
+policies:
+  - cors
+  - log
+  - proxy
+  - jwt
+
+pipelines:
+  auth:
+    apiEndpoints:
+      - auth
+    policies:
+      - proxy:
+          - action:
+              serviceEndpoint: auth
+  json:
+    apiEndpoints:
+      - json
+    policies:
+      - jwt:
+        - action:
+            secretOrPublicKey: '${JWT_SECRET:-JWT_SECRET}'
+            checkCredentialExistence: false
+      - proxy:
+          - action:
+              serviceEndpoint: json
+  image:
+    apiEndpoints:
+      - image
+    policies:
+      - jwt:
+        - action:
+            secretOrPublicKey: '${JWT_SECRET:-JWT_SECRET}'
+            checkCredentialExistence: false
+      - proxy:
+          - action:
+              serviceEndpoint: image

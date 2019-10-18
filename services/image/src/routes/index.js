@@ -5,7 +5,7 @@ import imageThumbnail from '../controlllers/imageThumbnail';
 const router = express.Router();
 
 
-router.get('/image/thumbnail', validateImage, imageThumbnail);
+router.get('/api/v1/image/thumbnail', validateImage, imageThumbnail);
 
 router.use((req, res) => res.status(404).send({
   status: 'error',

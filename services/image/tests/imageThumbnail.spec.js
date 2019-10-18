@@ -12,7 +12,7 @@ describe('/image/thumbnail endpoint', () => {
 
     try {
       res = await chai.request(app)
-        .get(`/image/thumbnail?url=${validUrl}`);
+        .get(`/api/v1/image/thumbnail?url=${validUrl}`);
     } catch (error) {
       console.error('here',error);
     }
@@ -26,7 +26,7 @@ describe('/image/thumbnail endpoint', () => {
 
     try {
       res = await chai.request(app)
-        .get(`/image/thumbnail?url=${invalidUrl}`);
+        .get(`/api/v1/image/thumbnail?url=${invalidUrl}`);
     } catch (error) {
       console.error('here',error);
     }
@@ -42,7 +42,7 @@ describe('/image/thumbnail endpoint', () => {
 
     try {
       res = await chai.request(app)
-        .get(`/image/thumbnail?url=${invalidUrl}`);
+        .get(`/api/v1/image/thumbnail?url=${invalidUrl}`);
     } catch (error) {
       console.error('here',error);
     }

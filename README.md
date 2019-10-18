@@ -1,4 +1,4 @@
-# HackerBay-Backend
-[![Build Status](https://travis-ci.org/Eazybee/HackerBay-Backend.svg?branch=develop)](https://travis-ci.org/Eazybee/HackerBay-Backend-)
-[![Maintainability](https://api.codeclimate.com/v1/badges/f7663f05f53944fea11d/maintainability)](https://codeclimate.com/github/Eazybee/HackerBay-Backend-/maintainability)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/f7663f05f53944fea11d/test_coverage)](https://codeclimate.com/github/Eazybee/HackerBay-Backend-/test_coverage)
+# Micro Services
+[![Build Status](https://travis-ci.org/Eazybee/MicroServices.svg?branch=develop)](https://travis-ci.org/Eazybee/MicroServices)
+[![Maintainability](https://api.codeclimate.com/v1/badges/626c79a2ac7eadef474d/maintainability)](https://codeclimate.com/github/Eazybee/MicroServices/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/626c79a2ac7eadef474d/test_coverage)](https://codeclimate.com/github/Eazybee/MicroServices/test_coverage)

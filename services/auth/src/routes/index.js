@@ -4,7 +4,7 @@ import login from '../controlllers/login';
 
 const router = express.Router();
 
-router.post('/login', validateLogin, login);
+router.post('/api/v1/auth/login', validateLogin, login);
 
 router.use((req, res) => res.status(404).send({
   status: 'error',

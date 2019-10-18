@@ -1,4 +1,4 @@
-import validateSchema from '../helpers/utils';
+import Validator from 'validatorjs';
 
 
 /**
@@ -16,8 +16,15 @@ const validateLogin = (req, res, next) => {
     password: ['required', 'min:8'],
   };
 
-  if (validateSchema(req.body, loginRules, res)) {
+  const validation = new Validator(req.body, loginRules);
+
+  if (validation.passes()) {
     next();
+  } else {
+    res.status(400).json({
+      status: 'error',
+      error: validation.errors.all(),
+    });
   }
 };
 

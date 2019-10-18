@@ -12,7 +12,7 @@ describe('/json endpoint', () => {
 
     try {
       res = await chai.request(app)
-        .patch('/json').send({
+        .patch('/api/v1/json').send({
           document: { firstName: 'Joachim', lastName: 'Wester' },
           operation: { op: 'replace', path: '/firstName', value: 'Joachim' },
         });
@@ -30,7 +30,7 @@ describe('/json endpoint', () => {
 
     try {
       res = await chai.request(app)
-        .patch('/json').send({
+        .patch('/api/v1/json').send({
           document: { firstName: 'Joachim', lastName: 'Wester' },
           operation: { op: 'replace', path: '/ola', value: 'Joachim' },
         });

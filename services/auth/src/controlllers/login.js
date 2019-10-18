@@ -11,13 +11,15 @@ import jwt from 'jsonwebtoken';
 const login = (req, res) => {
   const token = jwt.sign(
     { userName: req.body.userName.toLowerCase() },
-    process.env.JWT_SECRET,
+    process.env.JWT_SECRET || 'JWT_SECRET',
     { expiresIn: '2h' },
   );
 
   res.status(200).json({
     status: 'success',
-    data: { token },
+    data: {
+      token: `Bearer ${token}`,
+    },
   });
 };
 

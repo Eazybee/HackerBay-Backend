@@ -11,7 +11,7 @@ describe('/login', () => {
 
     try {
       res = await chai.request(app)
-        .post('/login').send({
+        .post('/api/v1/auth/login').send({
           userName: 'Eazybee',
           password: 'Eazybeee',
         });
@@ -28,7 +28,7 @@ describe('/login', () => {
 
     try {
       res = await chai.request(app)
-        .post('/login').send({
+        .post('/api/v1/auth/login').send({
           userName: 'Eazybee',
           password: '',
         });

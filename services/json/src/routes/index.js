@@ -4,7 +4,7 @@ import jsonPatch from '../controlllers/jsonPatch';
 
 const router = express.Router();
 
-router.patch('/json', validateJson, jsonPatch);
+router.patch('/api/v1/json', validateJson, jsonPatch);
 
 router.use((req, res) => res.status(404).send({
   status: 'error',

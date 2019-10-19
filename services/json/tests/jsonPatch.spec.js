@@ -14,7 +14,7 @@ describe('/json endpoint', () => {
       res = await chai.request(app)
         .patch('/api/v1/json').send({
           document: { firstName: 'Joachim', lastName: 'Wester' },
-          operation: { op: 'replace', path: '/firstName', value: 'Joachim' },
+          operation: { op: 'replace', path: '/firstName', value: 'Bee' },
         });
     } catch (error) {
       console.error(error);
@@ -22,7 +22,7 @@ describe('/json endpoint', () => {
 
     expect(res.status).to.equal(200);
     expect(res.body.status).to.equal('success');
-    expect(res.body.data.document.firstName).equal('Joachim');
+    expect(res.body.data.document.firstName).equal('Bee');
   });
 
   it('should not patch document successfully when passed invalid operation', async () => {

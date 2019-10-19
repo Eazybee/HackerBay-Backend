@@ -10,7 +10,7 @@ import jwt from 'jsonwebtoken';
  */
 const login = (req, res) => {
   const token = jwt.sign(
-    { userName: req.body.userName.toLowerCase() },
+    { userName: req.body.username.toLowerCase() },
     process.env.JWT_SECRET || 'JWT_SECRET',
     { expiresIn: '2h' },
   );

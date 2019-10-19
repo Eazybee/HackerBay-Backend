@@ -6,6 +6,9 @@ apiEndpoints:
     host: '*'
     paths: '/api/v1/auth/login'
     methods: ['POST', 'OPTIONS']
+  docs:
+    host: '*'
+    paths: '/docs/api/*'
   json:
     host: '*'
     paths: '/api/v1/json'
@@ -19,9 +22,9 @@ serviceEndpoints:
   auth:
     url: 'http://localhost:${AUTH_PORT:-3009}'
   json:
-    url: 'http://localhost:${JSON_PORT:-3008}'
+    url: 'http://localhost:${JSON_PORT:-3007}'
   image:
-    url: 'http://localhost:${IMAGE_PORT:-3007}'
+    url: 'http://localhost:${IMAGE_PORT:-3008}'
 
 policies:
   - cors
@@ -33,6 +36,13 @@ pipelines:
   auth:
     apiEndpoints:
       - auth
+    policies:
+      - proxy:
+          - action:
+              serviceEndpoint: auth
+  docs:
+    apiEndpoints:
+      - docs
     policies:
       - proxy:
           - action:

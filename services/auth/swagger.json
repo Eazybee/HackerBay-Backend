@@ -1,0 +1,238 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "This is a documentation for a microservice server.",
+    "version": "1.0.0",
+    "title": "Micro Services",
+    "termsOfService": "https://github.com/Eazybee/MicroServices/blob/develop/LICENSE",
+    "contact": {
+      "email": "ilorieazykiel@gmail.com"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "host": "localhost:3000",
+  "basePath": "/api/v1",
+  "tags": [
+    {
+      "name": "auth",
+      "description": "This is where you get authenticated before you can use the services"
+    },
+    {
+      "name": "json",
+      "description": "All endpoint related to json service"
+    },
+    {
+      "name": "image",
+      "description": "Operations about user"
+    }
+  ],
+  "schemes": [
+    "https",
+    "http"
+  ],
+  "paths": {
+    "/auth/login": {
+      "post": {
+        "tags": [
+          "auth"
+        ],
+        "summary": "You login through this endpoint",
+        "description": "",
+        "operationId": "login",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Provide user credentials",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Login"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "string"
+                },
+                "data": {
+                  "type": "object",
+                  "properties": {
+                    "token": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input",
+            "schema": {
+              "$ref": "#/definitions/InvalidInput"
+            }
+          }
+        }
+      }
+    },
+    "/json": {
+      "patch": {
+        "tags": [
+          "json"
+        ],
+        "summary": "Patch your Json document",
+        "description": "",
+        "operationId": "json",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Provide documents to patch",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Json"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "string"
+                },
+                "data": {
+                  "type": "object",
+                  "properties": {
+                    "document": {
+                      "type": "object"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input",
+            "schema": {
+              "$ref": "#/definitions/InvalidInput"
+            }
+          },
+          "401": {
+            "description": "unauthorized"
+          }
+        }
+      }
+    },
+    "/image/thumbnail": {
+      "get": {
+        "tags": [
+          "image"
+        ],
+        "summary": "Get image thumbnail",
+        "description": "",
+        "operationId": "image",
+        "produces": [
+          "image/png"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "query",
+            "name": "url",
+            "type": "string",
+            "description": "link to image",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success"
+          },
+          "400": {
+            "description": "Invalid input",
+            "schema": {
+              "$ref": "#/definitions/InvalidInput"
+            }
+          },
+          "401": {
+            "description": "unauthorized"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Login": {
+      "type": "object",
+      "properties": {
+        "username": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      }
+    },
+    "Json": {
+      "type": "object",
+      "properties": {
+        "document": {
+          "type": "object"
+        },
+        "operation": {
+          "type": "object"
+        }
+      }
+    },
+    "InvalidInput": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "string"
+        },
+        "error": {
+          "type": "object"
+        }
+      }
+    }
+  },
+  "externalDocs": {
+    "description": "Checkout the github repo",
+    "url": "https://github.com/Eazybee/MicroServices/blob/develop/LICENSE"
+  }
+}

@@ -12,8 +12,8 @@ import Validator from 'validatorjs';
 */
 const validateLogin = (req, res, next) => {
   const loginRules = {
-    userName: 'required|alpha',
-    password: ['required', 'min:8'],
+    username: 'required|alpha',
+    password: 'required|string',
   };
 
   const validation = new Validator(req.body, loginRules);

@@ -12,7 +12,7 @@ describe('/login', () => {
     try {
       res = await chai.request(app)
         .post('/api/v1/auth/login').send({
-          userName: 'Eazybee',
+          username: 'Eazybee',
           password: 'Eazybeee',
         });
     } catch (error) {
@@ -29,7 +29,7 @@ describe('/login', () => {
     try {
       res = await chai.request(app)
         .post('/api/v1/auth/login').send({
-          userName: 'Eazybee',
+          username: 'Eazybee',
           password: '',
         });
     } catch (error) {

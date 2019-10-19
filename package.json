@@ -27,6 +27,7 @@
     "helmet": "^3.21.1",
     "lerna": "^3.4.3",
     "nodemon": "^1.19.3",
+    "swagger-ui-express": "^4.1.2",
     "winston": "^3.2.1"
   },
   "devDependencies": {
@@ -62,7 +63,11 @@
     "require": [
       "babel-register"
     ],
-    "reporter": ["lcov", "text", "html"],
+    "reporter": [
+      "lcov",
+      "text",
+      "html"
+    ],
     "exclude": [
       "**/*.spec.js"
     ]

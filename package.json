@@ -4,7 +4,6 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start-dev": "concurrently \"cd services/auth && npm run start\" \"cd services/json && npm run start\" \"cd services/image && npm run start\"",
     "start": "lerna exec --no-bail npm start",
     "test": "nyc mocha ./**/tests/*.spec.js --timeout 10000 --exit",
     "bootstrap": "lerna bootstrap",

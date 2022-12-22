@@ -9,7 +9,7 @@
     "test": "nyc mocha ./tests/index.spec.js --exit"
   },
   "dependencies": {
-    "jsonwebtoken": "^8.5.1",
+    "jsonwebtoken": "^9.0.0",
     "validatorjs": "^3.17.1"
   },
   "license": "MIT"

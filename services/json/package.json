@@ -8,7 +8,7 @@
     "test": "nyc mocha ./tests/index.spec.js --exit"
   },
   "dependencies": {
-    "fast-json-patch": "^3.0.0-1"
+    "fast-json-patch": "^3.1.1"
   },
   "license": "MIT"
 }
